@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "main.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Articulos {% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+        <h2>Vista basada en class ListView</h2>
+        <!-- Notas: 
+               Para hacer instancia a la lista de objetos, en vistas basadas en class ListView, "object_list" is name by default para "for".
+        -->
+        {% comment %}
+            {% for my_object in object_list %}
+                <p>{{ my_object.title }}</p>
+                <p>{{ my_object.content }}</p>
+            {% endfor %}
+        {% endcomment %}
+
+        {% for my_object in object_list %}
+            <p>
+                {{ my_object.id }} <a href="{{ my_object.get_absolute_url }}">{{ my_object.title }}</a>
+            </p>
+        {% endfor %}
+
+    {% endblock %}
+</body>
+</html>

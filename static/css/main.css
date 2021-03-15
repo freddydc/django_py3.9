@@ -1,0 +1,19 @@
+#nav {
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
+}
+#nav a {
+    display: inline;
+    margin: 0px 20px 0px 0px;
+    list-style: none;
+    text-align: center;
+    font-size: 22px;
+    color: white;
+}
+#nav ul {
+    margin: 10px 40px 10px 40px;
+    font-style: italic;
+    text-align: center;
+    background: orange;
+}

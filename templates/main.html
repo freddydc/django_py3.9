@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+    <link rel="shorcut icon" type="image/jpg" href="{% static 'img/favicon.ico' %}">
+    <title>{% block title %} Main Page {% endblock %}</title>
+</head>
+<body>
+
+    {% include 'navbar/navbar.html' %}
+
+    {% block content %}
+
+    {# simple comentario #}
+
+    {% comment %}
+
+    {% endcomment %}
+
+    <h2>{{ title|capfirst|title }}</h2>
+
+    <h2><p> Modo 1: {{ prf }} </p></h2>
+    <h2><p> Modo 2: {{ prf|safe }} </p></h2>
+    <h2><p> Modo 3: {{ prf|striptags|slugify }} </p></h2>
+
+    <table border="1.4">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for name in names %}
+                <tr>
+                    <td>{{ forloop.counter }}.- {{ name }}</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+        <ul>
+            {% for name in names %}
+                {% if name == 'freddy' %}
+                    <li>{{ name|upper|add:' diaz'|upper }}</li>
+                {% elif name == 'juan' %}
+                    <li>{{ name.upper }}</li>
+                {% else %}
+                    <li>{{ forloop.counter }}.- {{ name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </tbody>
+    </table>
+
+        <h2>Usuario iniciado es: {{ user }}</h2>
+        
+        {% if request.user.is_authenticated %}
+            <p>{{ user }} esta registrado</p>
+        {% else %}
+            <p>No esta registrado</p>
+        {% endif %}
+
+        <p>Esta registrado: {{ request.user.is_authenticated }}</p>
+
+    <!-- OBJECT LIST QUERY SET -->
+    <div>
+        <h2>Query Set Listas</h2>
+
+        {{ object_list }}
+
+        {% for instance in object_list %}
+            <p>{{ instance.id }} --- {{ instance.title }}</p>
+        {% endfor %}
+    </div>
+
+    <!-- DYNAMIC LINKING OF URLS -->
+    <div>
+        <h2>Dynamic Linkig Of Urls</h2>
+        {% for instance in object_list %}
+            <p>
+                {{ instance.id }} : 
+                {% comment %}
+                    Metodos:
+                    1 *--
+                <a href="/my_post/{{ instance.id }}/">{{ instance.title }}</a>
+                    2 *--
+                <a href="{{ instance.get_absolute_url }}">{{ instance.title }}</a>
+                {% endcomment %}
+
+                <a href="{{ instance.get_absolute_url }}">{{ instance.title }}</a>
+            </p>
+        {% endfor %}
+    </div>
+    {% endblock %}
+
+</body>
+</html>

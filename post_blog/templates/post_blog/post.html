@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>{% block title %} Blog Page {% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+        <h1>Page Blog</h1>
+        <h2>Usuario iniciado es: {{ user }}</h2>
+        
+        {% if request.user.is_authenticated %}
+            <p>{{ user }} esta registrado</p>
+        {% else %}
+            <p>No esta registrado</p>
+        {% endif %}
+
+        <p>Esta registrado: {{ request.user.is_authenticated }}</p>
+    {% endblock %}
+</body>
+</html>

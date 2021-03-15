@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block title %} 
+    Formulario 2 
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <H1>Render initial data</H1>
+        <h2>Hacer referncia a un objecto, and update</h2>
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save Form">
+        </form>
+    </div>
+
+{% endblock %}

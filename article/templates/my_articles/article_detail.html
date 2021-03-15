@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "main.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Detalles de Articulo {% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <h2>Vista basada en class DetailView</h2>
+    <!-- Notas:
+            Vista basada en class DetailView, no hace falta crear un "for" para acceder a los datos de objecto.
+     -->
+   <h1> {{ object.title }} </h1>
+   <p> {{ object.content }} </p>
+    {% endblock %}
+</body>
+</html>

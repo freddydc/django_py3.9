@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Formulario {% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+
+        <div>
+            <!-- 
+            FORMULARIO 1:
+                NOTA: "q" is STANDAR request search, GOOGLE, DUCKDUCKGO:
+                https://www.duckduckgo.com/?django 
+            -->
+
+            <form action="https://www.duckduckgo.com" method="GET">
+                <input type="text" name="q" placeholder="Busca algo en duckduckgo">
+                <input type="submit" value="save">
+            </form>
+
+            <br>
+
+            <!-- 
+                FORMULARIO 2:
+            -->
+
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="title" placeholder="Escribe algo en el titulo">
+                <input type="submit" value="Save">
+            </form>
+        </div>
+
+    {% endblock %}
+</body>
+</html>

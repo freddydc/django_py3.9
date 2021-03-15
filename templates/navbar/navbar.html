@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div>
+        <nav id="nav">
+            <ul>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'store' %}">Store</a>
+                <a href="{% url 'blog' %}">Blog</a>
+                <a href="{% url 'account' %}">Account</a>
+                <a href="{% url 'template_app' %}">Template In App</a>
+                <a href="{% url 'form_create_view' %}">Form Uno</a>
+                <a href="{% url 'form_create_raw' %}">Form Dos</a>
+                <a href="{% url 'render_init_data' %}">Form Tres Init Data</a>
+                {% comment %}
+                <!-- # Argument my_id en proceso para utilizar en menu...  -->
+                <a href="{% url 'dynamic' %}">Dynamic</a>
+                <a href="{% url 'delete_data' %}">Delete</a>
+                {% endcomment %}
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
