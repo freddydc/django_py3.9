@@ -2,16 +2,18 @@ from django.urls import path
 from .views import (
     ArticleListView,
     ArticleDetailView,
+    ArticleCreateView,
 )
 
 app_name = 'articles'
 
 urlpatterns = [
-    ## pk <=> id, pk is required por defecto: '<int:pk>/', for views based in CLASS. ##
-        ## Para utilizar "id", create a function in views.
-    path('', ArticleListView.as_view(), name='article-list'),
-    ## Url default, acepta "pk" ##
+    ### pk <=> id, pk is required por defecto: '<int:pk>/', for class views:
+        ## Para utilizar "id", create a function in specific view.
+    path('list/', ArticleListView.as_view(), name='article-list'),
+        ## DetailView, url default, acepta "pk".
     # path('<int:pk>/', ArticleDetailView.as_view(), name='article-detail'),
-    ## Url mejorado, para aceptar "id"  ##
+        ## DetailView, url mejorado, para aceptar "id".
     path('<int:my_id>/', ArticleDetailView.as_view(), name='article-detail'),
+    path('create/', ArticleCreateView.as_view(), name='article-create'),
 ]

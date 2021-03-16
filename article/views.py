@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from .forms import ArticleModelForm
 from .models import *
 from django.views.generic import (
     CreateView,
@@ -9,6 +10,17 @@ from django.views.generic import (
 )
 
 # Create your class views based here.
+
+
+class ArticleCreateView(CreateView):
+
+    template_name = 'my_articles/article_create.html'
+    form_class = ArticleModelForm
+    queryset = Article.objects.all()
+
+    def form_valid(self, my_form):
+        print(f"Form cleaned data: {my_form.cleaned_data}\n")
+        return super().form_valid(my_form)
 
 
 class ArticleListView(ListView):
@@ -46,7 +58,7 @@ class ArticleDetailView(DetailView):
 
     ### Don't use this function with a "filter".
     def get_object(self):
-        ## Use underscore later "id_", para evitar confilcts with keywords
+        ## Use underscore later "id_" variable, para evitar confilcts with keywords
         id_ = self.kwargs.get("my_id")
         print(f"Get id in class view: {id_}")
         return get_object_or_404(Article, id=id_)
