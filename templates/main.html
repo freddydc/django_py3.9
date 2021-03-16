@@ -8,10 +8,10 @@
     <title>{% block title %} Main Page {% endblock %}</title>
 </head>
 <body>
-    {# simple comentario #}
+    {# simple coment #}
     {% comment %} comments {% endcomment %}
 
-    {% include 'navbar/navbar.html' %}
+    {% include 'menu/navbar.html' %}
 
     {% block content %}
         <h2>{{ title|capfirst|title }}</h2>
@@ -28,12 +28,12 @@
             </tr>
         </thead>
         <tbody>
-                {% for name in names %}
-                    <tr>
-                        <td>{{ forloop.counter }}.- {{ name }}</td>
-                        <td></td>
-                    </tr>
-                {% endfor %}
+            {% for name in names %}
+                <tr>
+                    <td>{{ forloop.counter }}.- {{ name }}</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
             <ul>
                 {% for name in names %}
                     {% if name == 'freddy' %}
@@ -77,9 +77,7 @@
                     {{ instance.id }} : 
                     {% comment %}
                         Metodos:
-                        1 *--
                     <a href="/my_post/{{ instance.id }}/">{{ instance.title }}</a>
-                        2 *--
                     <a href="{{ instance.get_absolute_url }}">{{ instance.title }}</a>
                     {% endcomment %}
 

@@ -7,12 +7,12 @@ from post_blog import views
 app_name = 'my_post'
 
 urlpatterns = [
-    ### Dynamic url to link click view ... ###
+    ### Dynamic url to link click view
         ## Modelo inicial:
     # path('my_post/', views.my_post_url, name='my_post_url'),
     # path('my_post/<int:my_id>/', views.my_post_url_view, name='my_post_url_view'),
         ## Modelo mejorado:
     path('my_post/', views.my_post_url, name='my_post_url'),
     path('my_air/<int:my_id>/', views.my_post_url_view, name='my_post_url_view'),
-    ### END: Dynamic url to link click view ... ###
+    ### END: Dynamic url to link click view
 ]

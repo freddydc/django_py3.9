@@ -61,7 +61,7 @@ def my_post_url_view(request, my_id):
         'object': obj,
     }
 
-    return render(request, 'blog_post/dynamic.html', data)
+    return render(request, 'main/dynamic.html', data)
 
 ### END DYNAMIC URL TO LINK ###
 
@@ -77,7 +77,7 @@ def home_post(request):
 
     # return HttpResponse(f"<p>Hola {name} que tal, tu edad es {age}</p>")
 
-    return render(request, 'post_blog/post.html')
+    return render(request, 'post/post.html')
 
 
 def blog_store(request):
@@ -89,7 +89,7 @@ def blog_store(request):
         'details': obj.details,
     }
 
-    return render(request, 'blog_post/details.html', data)
+    return render(request, 'main/details.html', data)
 
 ## FORMULARIOS ##
 
@@ -113,7 +113,7 @@ def form_create_view(request):
         'form': my_form,
     }
 
-    return render(request, 'post_blog/form_create_view.html', context)
+    return render(request, 'post/form_create_view.html', context)
 
 
 ### Metodo 2:
@@ -135,7 +135,7 @@ def form_create_url(request):
 
     data = {}
 
-    return render(request, 'post_blog/form_create_url.html', data)
+    return render(request, 'post/form_create_url.html', data)
 
 
 ### Metodo 3:
@@ -179,7 +179,7 @@ def form_create_raw(request):
         'form': my_form,
     }
 
-    return render(request, 'post_blog/form_create_raw.html', data)
+    return render(request, 'post/form_create_raw.html', data)
 
 ## END: FORMULARIOS ##
 
@@ -193,7 +193,7 @@ def template_app(request):
         'details': obj.details,
     }
 
-    return render(request, 'post_blog/post_template.html', data)
+    return render(request, 'post/post_template.html', data)
 
 
 def account_view(request, *args, **kwargs):
@@ -201,7 +201,7 @@ def account_view(request, *args, **kwargs):
     print(f"*args: {args}, **kwargs: {kwargs}")
 
     # return HttpResponse('<p>Hola usuario</p')
-    return render(request, 'post_blog/account.html')
+    return render(request, 'post/account.html')
 
 
 def render_initial_data(request):
@@ -234,7 +234,7 @@ def render_initial_data(request):
         'form': form,
     }
 
-    return render(request, 'post_blog/form_initial_data.html', context)
+    return render(request, 'post/form_initial_data.html', context)
 
 
 ### Dynamic url get objects:
@@ -271,7 +271,7 @@ def dynamic_lookup_view(request, my_id):
         'object': obj,
     }
 
-    return render(request, 'blog_post/dynamic.html', data)
+    return render(request, 'main/dynamic.html', data)
 
 
 ### Delete data Objects
@@ -293,4 +293,4 @@ def post_delete_data(request, my_id):
         'object': obj,
     }
 
-    return render(request, 'post_blog/delete_data.html', data)
+    return render(request, 'post/delete_data.html', data)

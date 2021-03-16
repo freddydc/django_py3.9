@@ -14,7 +14,7 @@ from django.views.generic import (
 
 class ArticleCreateView(CreateView):
 
-    template_name = 'my_articles/article_create.html'
+    template_name = 'article/article_create.html'
     form_class = ArticleModelForm
     queryset = Article.objects.all()
 
@@ -30,7 +30,7 @@ class ArticleListView(ListView):
             # "template_name" is default:
             # "queryset" is default.
 
-    template_name = 'my_articles/my_article_list.html'
+    template_name = 'article/my_article_list.html'
     queryset = Article.objects.all()
     print(f"ListView queryset: {queryset}\n")
 
@@ -40,7 +40,7 @@ class ArticleDetailView(DetailView):
     ### DetailView -> Notas:
         ## "pk" es utilizado por defecto en queryset, para hacer referencia a objectos desde template.
 
-    template_name = 'my_articles/article_detail.html'
+    template_name = 'article/article_detail.html'
 
     ### Method ONE:
         ## Don't need "queryset", with "get_object" function.
