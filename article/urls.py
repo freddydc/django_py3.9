@@ -14,6 +14,6 @@ urlpatterns = [
         ## DetailView, url default, acepta "pk".
     # path('<int:pk>/', ArticleDetailView.as_view(), name='article-detail'),
         ## DetailView, url mejorado, para aceptar "id".
-    path('<int:my_id>/', ArticleDetailView.as_view(), name='article-detail'),
+    path('detail/<int:my_id>/', ArticleDetailView.as_view(), name='article-detail'),
     path('create/', ArticleCreateView.as_view(), name='article-create'),
 ]

@@ -17,6 +17,7 @@ abc_2 = {
     'date': '2080'
 }
 
+# Two dictionaries unit, with **kwargs.
 letter = {**abc, **abc_2}
 
 print('\n', letter, '\n')

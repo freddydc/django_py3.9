@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% block title %}  Class View create {% endblock %}
 {% block content %}
+    <h2 style="color: orange;">Vista basada en class <p><i>CreateView</i></p></h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
