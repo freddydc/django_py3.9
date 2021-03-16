@@ -103,4 +103,3 @@ for username, user_info in my_users.items():
 #     users_default.append(tuple(user))
 
 # print(users_default)
-# Hola Git

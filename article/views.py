@@ -29,15 +29,23 @@ class ArticleDetailView(DetailView):
         ## "pk" es utilizado por defecto en queryset, para hacer referencia a objectos desde template.
 
     template_name = 'my_articles/article_detail.html'
-    queryset = Article.objects.all()
-    print(f"DetailView queryset: {queryset}\n")
+    ### Method ONE:
+        ## Don't need "queryset", with "get_object" function.
+    # queryset = Article.objects.all()
+    # print(f"DetailView queryset: {queryset}\n")
+
+    ### Method TWO:
+        ## Use "filter", and use "<int:pk>/" in urls:
+            # id "id__gt=1", para hacer referencia a objetos con "id" > 1.
+    # queryset = Article.objects.filter(id__gt=1)
 
         ## Crear una funcion para utilizar "id", para hacer referencia...
             # The "get_object", function is default:
                 # Use get_object_or_404, with the def "get_object". 
 
+    ### Don't use this function with a "filter".
     def get_object(self):
-        ## Use underscore later "id_", para evitar confilcts with keywords
+        # Use underscore later "id_", para evitar confilcts with keywords
         id_ = self.kwargs.get("my_id")
         print(f"Get id in class view: {id_}")
         return get_object_or_404(Article, id=id_)
