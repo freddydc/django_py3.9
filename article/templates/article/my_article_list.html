@@ -8,9 +8,10 @@
 </head>
 <body>
     {% block content %}
-        <h2 style="color: orange;">Vista basada en <p><i>class ListView</i></p></h2>
+        <h2 style="color: orange;">Vista basada en <b><i>class ListView</i></b></h2>
         <!-- Notas: 
-               Para hacer instancia a la lista de objetos, en vistas basadas en class: ListView, "object_list" is name by default para "for".
+               Para hacer instancia a la lista de objetos, en vistas basadas en class: ListView, "object_list" is name by default para "for": 
+               {% for custom in object_list %} {% endfor %}
         -->
         {% comment %}
             {% for my_object in object_list %}
@@ -19,9 +20,10 @@
             {% endfor %}
         {% endcomment %}
 
+        <h3>Id ---- Content</h3>
         {% for my_object in object_list %}
             <p>
-                {{ my_object.id }} <a href="{{ my_object.get_absolute_url }}">{{ my_object.title }}</a>
+                {{ my_object.id }}.- <a href="{{ my_object.get_absolute_url }}">{{ my_object.title }}</a>
             </p>
         {% endfor %}
 
