@@ -40,6 +40,7 @@ urlpatterns = [
     ### Add urls, de apps
     path('post_blog/', include('post_blog.urls')),
     path('article/', include('article.urls')),
+    path('courses/', include('courses.urls')),
     ### END: Add urls, de apps
     ### Dynamic url to link click view ...
     # path('my_post/', views.my_post_url, name='my_post_url'),

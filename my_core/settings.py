@@ -16,19 +16,19 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # home/space/Escritorio/django_py3.9
-print(f"BASE_DIR : {BASE_DIR}")
+print(f"\n\tGET THE PATH FOR THE PROJECT\nBASE_DIR: {BASE_DIR}")
 
-# /home/space/Escritorio/django?py3.9/blog/settings.py
-print(f"Settings file path : {Path(__file__)}")
+# /home/space/Escritorio/django_py3.9/my_core/settings.py
+print(f"GET SETTINGS FILE PATH: {Path(__file__)}")
 
-# /home/space/Escritorio/django?py3.9/blog/settings.py
+# /home/space/Escritorio/django_py3.9/my_core/settings.py
 # print(f"Path file resolve : {Path(__file__).resolve()}")
 
-# /home/space/Escritorio/django_py3.9/blog/
-print(f"Settings file parent : {Path(__file__).resolve().parent}")
+# /home/space/Escritorio/django_py3.9/my_core/
+print(f"GET SETTINGS FILE PARENT: {Path(__file__).resolve().parent}")
 
 # /home/space/Escritorio/django_py3.9
-print(f"Django blog project parent : {Path(__file__).resolve().parent.parent}")
+print(f"GET DJANGO PROJECT CORE PARENT: {Path(__file__).resolve().parent.parent}\n")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'post_blog.apps.PostBlogConfig',
     'article.apps.ArticleConfig',
+    'courses.apps.CoursesConfig',
 ]
 
 MIDDLEWARE = [

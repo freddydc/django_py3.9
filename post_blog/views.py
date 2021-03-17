@@ -9,13 +9,13 @@ from .models import Post
 
 def home_main(request):
 
-    ## Quuery Set:
-        # List of objects.
+    ### Quuery Set:
+        ## List of objects.
     queryset = Post.objects.all()
 
-    # Recibe request of user logged.
+    ### Recibe request of user logged.
     print(f"Request of user: {request.user}")
-    ## Recibe complete url request.
+    ### Recibe complete url request.
     print(f"Request url: {request}")
 
     user_req = request.user
@@ -39,7 +39,6 @@ def home_main(request):
 
 
 ### DYNAMIC URL TO LINK ###
-
 def my_post_url(request):
 
     queryset = Post.objects.all()
@@ -62,7 +61,6 @@ def my_post_url_view(request, my_id):
     }
 
     return render(request, 'main/dynamic.html', data)
-
 ### END DYNAMIC URL TO LINK ###
 
 
@@ -91,11 +89,9 @@ def blog_store(request):
 
     return render(request, 'main/details.html', data)
 
-## FORMULARIOS ##
-
-### Metodo 1:
-    # Formulario uno
-
+### FORMULARIOS:
+    ## Metodo 1:
+        # Formulario UNO
 def form_create_view(request):
 
     my_form = PostForm(request.POST or None)
@@ -116,13 +112,12 @@ def form_create_view(request):
     return render(request, 'post/form_create_view.html', context)
 
 
-### Metodo 2:
-    # Formulario dos
-
+    ## Metodo 2:
+        # Formulario DOS
 def form_create_url(request):
 
-    ## For get method example:
-        # <== View example: ==>
+    ### For get method example:
+        ## <== View example: ==>
             # localhost:8000/form_url/?title=a title here
     print(f"\nForm req GET: {request.GET} \nForm req GET (title): {request.GET['title']} \nForm req POST: {request.POST}\n")
 
@@ -130,7 +125,7 @@ def form_create_url(request):
         my_title = request.POST.get('title')
 
         print(f"my_title metodo GET ('title'): {my_title}\n")
-        # Use this instruction for create new title:
+        ## Use this instruction for create new title:
         # Post.objects.create(title=my_title)
 
     data = {}
@@ -138,21 +133,18 @@ def form_create_url(request):
     return render(request, 'post/form_create_url.html', data)
 
 
-### Metodo 3:
-    # Formulario tres
-
+    ## Metodo 3:
+        # Formulario TRES
 def form_create_raw(request):
     
-    ### Metodo uno:
-
-        # No aparece que el campo es obligatario.
+    ### Metodo UNO:
+        ## No aparece que el campo es obligatario.
     # my_form = RawPostForm()
 
-        # Aparece que el campo es obligatario con metodo POST.
+        ## Aparece que el campo es obligatario con metodo "POST".
     # my_form = RawPostForm(request.POST)
 
-    ### Metodo dos:
-
+    ### Metodo DOS:
     my_form = RawPostForm()
     print(f"my_form before: {my_form}")
 
@@ -180,8 +172,7 @@ def form_create_raw(request):
     }
 
     return render(request, 'post/form_create_raw.html', data)
-
-## END: FORMULARIOS ##
+### END: FORMULARIOS
 
 
 def template_app(request):
@@ -204,25 +195,26 @@ def account_view(request, *args, **kwargs):
     return render(request, 'post/account.html')
 
 
+### Render initial data wit FORMULARY
 def render_initial_data(request):
 
-    # Forma inicial:
+    ### Forma inicial:
     initial_data = {
         'title': 'My awesome title',
     }
 
     my_obj = Post.objects.get(id=1)
 
-    ## RawForm:
+    ### RawForm:
     # form = RawPostForm(request.POST or None, initial=initial_data)
 
-    ## ModelForm:
-        # Conflict with arguments, don't set (my_obj) object:
-            # ... , initial=initial_data, instance=my_obj ...
-
+    ### ModelForm:
+        ## Conflict with ARGUMENTS, don't set "my_obj" instance:
+            ## (... , "initial=initial_data", "instance=my_obj")
     # form = PostForm(request.POST or None, initial=initial_data, instance=my_obj)
-        # This method set default instance of my_obj:
-            # ... , instance=my_obj ...
+
+        ## This method set default instance of "my_obj":
+            ## (... , "instance=my_obj")
     form = PostForm(request.POST or None, instance=my_obj)
 
     if form.is_valid():
@@ -239,7 +231,6 @@ def render_initial_data(request):
 
 ### Dynamic url get objects:
     ## Hacer referencia a objetos desde URL.
-
 def dynamic_lookup_view(request, my_id):
 
     ### Uno:
@@ -274,19 +265,19 @@ def dynamic_lookup_view(request, my_id):
     return render(request, 'main/dynamic.html', data)
 
 
-### Delete data Objects
-
+### DELETE data Objects
 def post_delete_data(request, my_id):
 
     obj = get_object_or_404(Post, id=my_id)
-    ## POST request delete data
 
+    ### POST request delete data
     if request.method == 'POST':
-        ## Confirming delete
+        ### Confirming delete
         obj.delete()
-        ## Use redirect module:
-            # Redirect module dirige a otra vista despues de ejecutar.
-            # ... redirect('../../')
+
+        ### Use redirect module:
+            ## Redirect module dirige a otra vista despues de ejecutar.
+            ## ... redirect('../../')
         return redirect('http://localhost:8000/')
 
     data = {

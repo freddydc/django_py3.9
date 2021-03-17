@@ -7,7 +7,7 @@ from django.views.generic import (
     DetailView,
     ListView,
     UpdateView,
-    DeleteView
+    DeleteView,
 )
 
 # Create your class views based here.
@@ -20,7 +20,7 @@ class ArticleCreateView(CreateView):
     queryset = Article.objects.all()
 
     ### Si el form es procesado con exito, dirige a la vista principal:
-        ## En lugar de dirigir a la vista by default, "article-detail".
+        ## En lugar de dirigir a la vista by DEFAULT, "article-detail".
     # success_url = '/'
 
     ### "LEARN" more about the "form_valid", function:
@@ -70,9 +70,9 @@ class ArticleDetailView(DetailView):
             # The "get_object", function is default:
                 # Use get_object_or_404, with the def "get_object". 
 
-    ### Don't use this function with a "filter".
+    ### Don't use this function with a "filter" in the "queryset".
     def get_object(self):
-        ## Use underscore later "id_" variable, para evitar confilcts with keywords
+        ## Use underscore later "id_" name, para evitar confilcts with keywords.
         id_ = self.kwargs.get("my_id")
         print(f"GET ID IN CLASS VIEW: {id_}")
         return get_object_or_404(Article, id=id_)
