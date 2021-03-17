@@ -9,7 +9,7 @@ from .models import Post
 
 def home_main(request):
 
-    ### Quuery Set:
+    ### Query Set:
         ## List of objects.
     queryset = Post.objects.all()
 
