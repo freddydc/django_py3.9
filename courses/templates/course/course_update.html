@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block title %}Update View{% endblock %}
+{% block content %}
+    <H1>Update Object With "View" module</H1>
+    <h2>Update: {{ object.id }}.- {{ object.title }}</h2>
+    <div>
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Ok Update">
+        </form>
+    </div>
+{% endblock %}

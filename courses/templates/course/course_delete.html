@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block title %}Delete Object{% endblock %}
+{% block content %}
+    <div>
+        <h1>Delete Object In "View" Based View</h1>
+        <form action="." method="POST">
+            {% csrf_token %}
+            <h2>Do you want to delete the course: "{{ object.title }}"</h2>
+            <div>
+                <input type="submit" value="Ok Delete">
+                <a href="../">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

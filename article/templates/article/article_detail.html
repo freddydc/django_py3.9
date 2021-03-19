@@ -8,12 +8,15 @@
 </head>
 <body>
     {% block content %}
+
     <h2 style="color: orange;">Vista basada en class <b><i>DetailView</i></b></h2>
-    <!-- Notas:
-            Vista basada en class DetailView, no hace falta crear un "for" para acceder a los datos de objecto.
-     -->
-   <h1> {{ object.title }} </h1>
-   <p> {{ object.content }} </p>
+    <!-- 
+    Notas:
+        For view based in class DetailView, "object" is the default "key" to access, the "value".
+    -->
+   <h1>{{ object.title }}</h1>
+   <p>{{ object.content }}</p>
+
     {% endblock %}
 </body>
 </html>
