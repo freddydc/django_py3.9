@@ -12,7 +12,22 @@ def my_home(request, *args, **kwargs):
     return render(request, 'course/my_home.html', {})
 
 
-### Base View Class = View
+### CUSTOM MIXIN FOR CLASS BASED IN "View" MODULE
+class CourseObjectMixin(object):
+
+    model = Course
+    lookup = 'id'
+
+    def get_object(self):
+
+        id = self.kwargs.get(self.lookup)
+        obj = None
+
+        if id is not None:
+            obj = get_object_or_404(self.model, id=id)
+        return obj
+
+### Base View Class = "View"
 class CourseView(View):
     ### Notas: 
         ## The "self" is required in "get()" function. The "self", is useful in class.
@@ -34,18 +49,27 @@ class CourseView(View):
 
 
 ### RAW DETAIL CLASS BASED IN "View" MODULE
-class CourseDetailView(View):
+class CourseDetailView(CourseObjectMixin, View):
 
     template_name = 'course/course_detail.html'
 
     def get(self, request, id=None, *args, **kwargs):
 
-        data = {}
+        ### NOTA: Doesn't having the "CourseObjectMixin", DATA "dictionary" set EMPTY:
+            ## Having the "CourseOjectMixin" set a "key" and "value".
+
+        data = {'object': self.get_object()}
+
+        ### NOTA: Doesn't need, having the class "CourseObjectMixin".
+        """
         if id is not None:
             obj = get_object_or_404(Course, id=id)
-            ## Create a "KEY" and "VALUE", for data dictionary
+            ### Create a "KEY" and "VALUE", for data dictionary
             data['object'] = obj
+
             print(f"\nMY DATA: {data}\n")
+        """
+        print(f"\nMY DATA: {data}\n")
 
         return render(request, self.template_name, data)
 
@@ -118,7 +142,7 @@ class CourseUpdateView(View):
     template_name = 'course/course_update.html'
 
     ### Create a function to get "id".
-    def get_objet(self):
+    def my_get_objet(self):
 
         id = self.kwargs.get('id')
         obj = None
@@ -134,7 +158,7 @@ class CourseUpdateView(View):
 
         data = {}
         ### Set the value defined in "get_object(self)" function.
-        obj = self.get_objet()
+        obj = self.my_get_objet()
         print(f"GET METHOD OBJECT: {obj}\n")
 
         if obj is not None:
@@ -149,11 +173,11 @@ class CourseUpdateView(View):
     def post(self, request, id=None, *args, **kwargs):
 
         data = {}
-        obj = self.get_objet()
+        obj = self.my_get_objet()
         print(f"POST METHOD OBJECT: {obj}\n")
 
         if obj is not None:
-            ### Set the object "obj", obtained to instance, and request "POST".
+            ### Set the object "obj", obtained to "instance", and request "POST".
             form = CourseModelForm(request.POST, instance=obj)
 
             if form.is_valid():
@@ -166,10 +190,12 @@ class CourseUpdateView(View):
 
 
 ### RAW DELETE CLASS BASED IN "View" MODULE
-class CourseDeleteView(View):
+class CourseDeleteView(CourseObjectMixin, View):
 
     template_name = 'course/course_delete.html'
 
+    ### NOTA: Doesn't need this function, having class "CourseObjectMixin".
+    """
     def get_object(self):
 
         id = self.kwargs.get('id')
@@ -177,13 +203,15 @@ class CourseDeleteView(View):
 
         if id is not None:
             obj = get_object_or_404(Course, id=id)
-
         return obj
+    """
 
     def get(self, request, id=None, *args, **kwargs):
 
         data = {}
+        ### NOTA: The "obj" set value, hereda los valores de class "CourseObjectMixin"
         obj = self.get_object()
+        print(f"\nGET OBJ DELETE: {obj}\n")
 
         if obj is not None:
             data['object'] = obj
@@ -193,7 +221,9 @@ class CourseDeleteView(View):
     def post(self, request, id=None, *args, **kwargs):
 
         data = {}
+        ### NOTA:
         obj = self.get_object()
+        print(f"\nPOST OBJ DELETE: {obj}\n")
 
         if obj is not None:
             obj.delete()
@@ -202,6 +232,3 @@ class CourseDeleteView(View):
             return redirect('/courses/list/')
 
         return render(request, self.template_name, data)
-
-
-### CUSTOM MIXIN FOR CLASS BASED IN "View" MODULE
