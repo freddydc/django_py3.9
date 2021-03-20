@@ -104,3 +104,15 @@ for username, user_info in my_users.items():
 #     users_default.append(tuple(user))
 
 # print(users_default)
+
+title = 'abc'
+print(f"title: {title}")
+
+new_title = input('A new title: ')
+
+if new_title is not title:
+    print(f"A invalid title.")
+    print(f"Ok {new_title} not is equal to {title}, successfully...")
+else:
+    title = new_title
+    print(f"New title: {title}")
