@@ -60,7 +60,7 @@ def my_post_url_view(request, my_id):
         'object': obj,
     }
 
-    return render(request, 'main/dynamic.html', data)
+    return render(request, 'post/dynamic_view.html', data)
 ### END DYNAMIC URL TO LINK ###
 
 
@@ -92,7 +92,7 @@ def blog_store(request):
 ### FORMULARIOS:
     ## Metodo 1:
         # Formulario UNO
-def form_create_view(request):
+def form_view(request):
 
     my_form = PostForm(request.POST or None)
 
@@ -109,12 +109,12 @@ def form_create_view(request):
         'form': my_form,
     }
 
-    return render(request, 'post/form_create_view.html', context)
+    return render(request, 'post/form_view.html', context)
 
 
     ## Metodo 2:
         # Formulario DOS
-def form_create_url(request):
+def form_url(request):
 
     ### For get method example:
         ## <== View example: ==>
@@ -130,12 +130,12 @@ def form_create_url(request):
 
     data = {}
 
-    return render(request, 'post/form_create_url.html', data)
+    return render(request, 'post/form_url.html', data)
 
 
     ## Metodo 3:
         # Formulario TRES
-def form_create_raw(request):
+def form_raw(request):
     
     ### Metodo UNO:
         ## No aparece que el campo es obligatario.
@@ -171,11 +171,11 @@ def form_create_raw(request):
         'form': my_form,
     }
 
-    return render(request, 'post/form_create_raw.html', data)
+    return render(request, 'post/form_raw.html', data)
 ### END: FORMULARIOS
 
 
-def template_app(request):
+def post_details(request):
 
     obj = Post.objects.get(id=1)
 
@@ -184,10 +184,11 @@ def template_app(request):
         'details': obj.details,
     }
 
-    return render(request, 'post/post_template.html', data)
+    return render(request, 'post/post_details.html', data)
 
 
-def account_view(request, *args, **kwargs):
+### Utilzado para demostrar el uso de "*args" and "**kwargs"
+def post_account(request, *args, **kwargs):
 
     print(f"*args: {args}, **kwargs: {kwargs}")
 
@@ -196,7 +197,7 @@ def account_view(request, *args, **kwargs):
 
 
 ### Render initial data wit FORMULARY
-def render_initial_data(request):
+def render_init_data(request):
 
     ### Forma inicial:
     initial_data = {
@@ -226,7 +227,7 @@ def render_initial_data(request):
         'form': form,
     }
 
-    return render(request, 'post/form_initial_data.html', context)
+    return render(request, 'post/form_init_data.html', context)
 
 
 ### Dynamic url get objects:
@@ -262,7 +263,7 @@ def dynamic_lookup_view(request, my_id):
         'object': obj,
     }
 
-    return render(request, 'main/dynamic.html', data)
+    return render(request, 'post/dynamic_view.html', data)
 
 
 ### DELETE data Objects
