@@ -23,26 +23,25 @@ class Post(models.Model):
 
         return f"Titulo: {self.title}"
 
-    ## The method to "GET ABSOLUTE URL": --> UNO:
-        # def get_absolute_url(self): ..., modelo inicial.
+    ### The method to "GET ABSOLUTE URL": --> UNO:
+        ## def get_absolute_url(self): pass, modelo inicial.
     
     # def get_absolute_url(self):
     #     return f"/my_post/{self.id}/"
     
-    ## Get URLs with "REVERSE" method: --> DOS:
+    ### Get URLs with "REVERSE" method: --> DOS:
 
-        # Add "NAME" defined in "URLS", path(..., name='my_post_url_view'), to reverse("...", ...).
-
-        # Arguments, "ID" name defined in:
-            # URLS path('my_post<int:my_id>/', ...) PATH 
-            # VIEWS def(..., my_id): ARGUMENT
+        ## Arguments, "ID" name defined in:
+            # First "argument" add "name = post_url_view" defined in urls file.
+            # ID: Urls path('my_post<int:my_id>/', ...)
+            # VIEWS FILE: def(..., my_id): pass, set "my_id" argument.
             # Add the "ID" name as "KEY" in "kwargs" DICTIONARY.
 
-    ## Modelo inicial "REVERSE": --> UNO
+    ### Modelo inicial "REVERSE": --> UNO
     # def get_absolute_url(self):
-        # return reverse("my_post_url_view", kwargs={'my_id': self.id})
+        # return reverse("post_url_view", kwargs={'my_id': self.id})
 
     ## Modelo mejorado "REVERSE": --> DOS
         # Add defined name_app = 'my_post' in post_blog app urls.
     def get_absolute_url(self):
-        return reverse("my_post:my_post_url_view", kwargs={'my_id': self.id})
+        return reverse("my_post:post_url_view", kwargs={'my_id': self.id})

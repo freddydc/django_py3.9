@@ -12,7 +12,7 @@ urlpatterns = [
     # path('my_post/', views.my_post_url, name='my_post_url'),
     # path('my_post/<int:my_id>/', views.my_post_url_view, name='my_post_url_view'),
         ## Modelo mejorado:
-    path('my_post/', views.my_post_url, name='my_post_url'),
-    path('my_air/<int:my_id>/', views.my_post_url_view, name='my_post_url_view'),
+    path('my_post/', views.my_post_url, name='post_url'),
+    path('my_view/<int:my_id>/', views.my_post_url_view, name='post_url_view'),
     ### END: Dynamic url to link click view
 ]

@@ -7,7 +7,7 @@ from .models import Post
 # Create your views here.
 
 
-def home_main(request):
+def post_main(request):
 
     ### Query Set:
         ## List of objects.
@@ -64,8 +64,8 @@ def my_post_url_view(request, my_id):
 ### END DYNAMIC URL TO LINK ###
 
 
-# def home_post(request, name, age):
-def home_post(request):
+# def post_view(request, name, age):
+def post_view(request):
 
     print(f"Request of user: {request.user}")
     print(f"Request url: {request}")
@@ -74,7 +74,6 @@ def home_post(request):
     # age = age
 
     # return HttpResponse(f"<p>Hola {name} que tal, tu edad es {age}</p>")
-
     return render(request, 'post/post.html')
 
 
@@ -175,6 +174,7 @@ def form_raw(request):
 ### END: FORMULARIOS
 
 
+### Vista para detalles de un especifico objeto
 def post_details(request):
 
     obj = Post.objects.get(id=1)

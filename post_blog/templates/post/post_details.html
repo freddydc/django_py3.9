@@ -8,8 +8,12 @@
 </head>
 <body>
     {% block content %}
-        <h2>The detail view for post</h2>
-        <p>Title: {{ title }}, description: {{ details }}</p>
+        {% if title != None %}
+            <h2>The detail view for post</h2>
+            <p>Title: {{ title }}, description: {{ details }}</p>
+        {% else %}
+            <p>Nothing to view here!</p>
+        {% endif %}
     {% endblock %}
 </body>
 </html>

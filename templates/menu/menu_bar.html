@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
@@ -20,7 +19,7 @@
                 <a href="{% url 'form_raw' %}">Form Dos</a>
                 <a href="{% url 'render_init_data' %}">Form Tres Init Data</a>
                 {% comment %}
-                <!-- # Argument my_id en proceso para utilizar en menu.  -->
+                <!-- # Argument "my_id" en proceso para utilizar en menu.  -->
                 <a href="{% url 'dynamic' %}">Dynamic</a>
                 <a href="{% url 'delete_data' %}">Delete</a>
                 {% endcomment %}

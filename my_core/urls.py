@@ -19,17 +19,18 @@ from post_blog import views
 # from post_blog.views import *
 
 urlpatterns = [
+    ### The admin URL
     path('admin/', admin.site.urls),
-    # path('post/<str:name>/<str:age>/', views.home_post, name='post')
+    # path('post/<str:name>/<str:age>/', views.post_view, name='post_view')
     ### MAIN TEMPLATE VIEW
-    path('', views.home_main, name='home'),
+    path('', views.post_main, name='home'),
     path('store/', views.blog_store, name='store'),
-    path('post/', views.home_post, name='blog'),
+    path('post_view/', views.post_view, name='post_view'),
     path('user/', views.post_account, name='account'),
     path('post_detail/', views.post_details, name='post_detail'),
     ### END: MAIN TEMPLATE VIEW
     ### FORMULARIOS
-        ## localhost:8000/form_air/?title=django
+        ## for_url: localhost:8000/form_url/?title=sublime
     path('form_view/', views.form_view, name='form_view'),
     path('form_url/', views.form_url, name='form_url'),
     path('form_raw/', views.form_raw, name='form_raw'),
@@ -43,14 +44,14 @@ urlpatterns = [
     path('courses/', include('courses.urls')),
     ### END: Add urls, de apps
     ### Dynamic url to link click view
-    # path('my_post/', views.my_post_url, name='my_post_url'),
-    # path('my_post/<int:my_id>/', views.my_post_url_view, name='my_post_url_view'),
+    # path('my_post/', views.my_post_url, name='post_url'),
+    # path('my_view/<int:my_id>/', views.my_post_url_view, name='post_url_view'),
     ### END: Dynamic url to link click view
-    ### Create same <- name='...' ->, URLs to generate a problem with same URLs ###
-    path('profile/<int:my_id>/', views.post_account, name='profile_view'),
-    ### END: Create same <- name='...' ->, URLs to generate a problem with same URLs
-    ### Argument MY_ID en proceso para utilizar en menu NAVIGATION
+    ### Set same name='post_url', URLs to get a problem with same "name".
+    path('profile/<int:my_id>/', views.post_account, name='post_url'),
+    ### END: Set same name='post_url', URLs to get a problem with same "name".
+    ### Argument "my_id" in process for use in menu "NAVIGATION"
     path('dynamic/<int:my_id>/', views.dynamic_lookup_view, name='dynamic'),
     path('del/<int:my_id>/del/', views.post_delete_data, name='delete_data'),
-    ### END: Argument MY_ID en proceso para utilizar en menu NAVIGATION
+    ### END: Argument "my_id" in process for use in menu "NAVIGATION"
 ]
